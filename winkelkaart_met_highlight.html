@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <title>Interactieve winkelkaart</title>
+  <style>
+    body {{
+      font-family: sans-serif;
+    }}
+    .kaart-container {{
+      position: relative;
+      width: 600px;
+    }}
+    .marker {{
+      position: absolute;
+      width: 100px;
+      height: 70px;
+      border: 3px solid transparent;
+      transition: border-color 0.3s ease-in-out;
+    }}
+    .marker.highlight {{
+      border-color: red;
+      z-index: 10;
+    }}
+  </style>
+</head>
+<body>
+  <h2>Winkelkaart</h2>
+  <div class="kaart-container">
+    <img src="winkelkaart.png" width="600" height="400" alt="Winkelkaart">
+    <div id="gang5" class="marker" style="top:50px; left:50px;"></div>
+    <div id="gang4" class="marker" style="top:50px; left:160px;"></div>
+    <div id="gang2" class="marker" style="top:50px; left:270px;"></div>
+    <div id="gang1" class="marker" style="top:50px; left:380px;"></div>
+  </div>
+
+  <script>
+    const zone = window.location.hash.substring(1);
+    if (zone) {{
+      const el = document.getElementById(zone);
+      if (el) {{
+        el.classList.add("highlight");
+      }}
+    }}
+  </script>
+</body>
+</html>
